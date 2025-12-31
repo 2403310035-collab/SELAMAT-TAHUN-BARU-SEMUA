@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Happy New Year 2026</title>
+    <link rel="stylesheet" href="style_baru.css?v=2026.12.31.03">
+</head>
+<body>
+    <!-- Background Bintang Berkilauan -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Mercon Container -->
+    <div class="fireworks-container" id="fireworksContainer"></div>
+
+    <!-- Falling Objects Container -->
+    <div class="falling-objects" id="fallingObjects"></div>
+
+    <!-- Christmas Decorations Container -->
+    <div class="christmas-lights" id="christmasLights"></div>
+    <div class="falling-gifts" id="fallingGifts"></div>
+
+    <div class="container">
+        <!-- Form Input Nama -->
+        <div class="form-section" id="formSection">
+            <!-- Animasi Transisi Tahun 2025 ke 2026 -->
+            <div class="year-animation">
+                <div class="year-container" id="yearContainer">
+                    <div class="year-item old-year-item" id="oldYearItem">
+                        <span class="year-number">2025</span>
+                    </div>
+                    <div class="year-transition" id="yearTransition">
+                        <svg viewBox="0 0 100 100" class="transition-arrow">
+                            <path d="M 20 50 L 80 50" stroke="currentColor" stroke-width="3" fill="none"/>
+                            <path d="M 70 40 L 80 50 L 70 60" stroke="currentColor" stroke-width="3" fill="none"/>
+                        </svg>
+                    </div>
+                    <div class="year-item new-year-item" id="newYearItem">
+                        <span class="year-number">2026</span>
+                    </div>
+                </div>
+                <div class="celebration-text" id="celebrationText">Selamat Tahun Baru!</div>
+            </div>
+
+            <h2 class="form-title">Ucapan Spesial</h2>
+            <p class="form-subtitle">Masukkan nama untuk melihat pesan istimewa</p>
+            
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    id="nameInput" 
+                    placeholder="Nama Anda..."
+                    class="name-input"
+                    autocomplete="off"
+                >
+                <button onclick="showGreeting()" class="submit-btn">
+                    <span>Lihat Ucapan</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Halaman Ucapan dengan Slider -->
+        <div class="greeting-section" id="greetingSection">
+            <!-- Slider Container -->
+            <div class="slider-wrapper">
+                <div class="slider-container">
+                    <!-- Slide 1: Welcome -->
+                    <div class="slide active" data-slide="1">
+                        <div class="slide-bg"></div>
+                        <div class="slide-content">
+                            <h1 class="main-title">Happy New Year 2026</h1>
+                            
+                            <div class="name-display">
+                                <span id="displayName"></span>
+                            </div>
+
+                            <div class="message-card premium">
+                                <div class="card-shine"></div>
+                                <div class="card-decorations">
+                                    <span class="deco-floating deco-top-left">✨</span>
+                                    <span class="deco-floating deco-top-right">💫</span>
+                                    <span class="deco-floating deco-bottom-left">⭐</span>
+                                    <span class="deco-floating deco-bottom-right">🌟</span>
+                                </div>
+                                <div class="message-icon">✦</div>
+                                <h3 class="message-title typing-title"></h3>
+                                <p class="message-text typing-text"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: Motivasi Awal Tahun -->
+                    <div class="slide" data-slide="2">
+                        <div class="slide-bg"></div>
+                        <div class="slide-content">
+                            <h1 class="main-title">Motivasi Awal Tahun 2026</h1>
+
+                            <div class="message-card">
+                                <div class="card-shine"></div>
+                                <div class="message-icon">✦</div>
+                                <h3 class="message-title typing-title"></h3>
+                                <p class="message-text typing-text"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3: Semangat Tugas & UAS -->
+                    <div class="slide" data-slide="3">
+                        <div class="slide-bg"></div>
+                        <div class="slide-content">
+                            <h1 class="main-title">SEMANGAT STUDY 2026</h1>
+
+                            <div class="message-card no-bg">
+                                <div class="card-shine"></div>
+                                <div class="card-decorations">
+                                    <span class="deco-floating deco-top-left">✨</span>
+                                    <span class="deco-floating deco-top-right">💫</span>
+                                    <span class="deco-floating deco-bottom-left">⭐</span>
+                                    <span class="deco-floating deco-bottom-right">🌟</span>
+                                </div>
+                                <div class="message-icon">🎯</div>
+                                <h3 class="message-title typing-title"></h3>
+                                <p class="message-text typing-text"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4: Selamat Tahun Baru 2026 -->
+                    <div class="slide" data-slide="4">
+                        <div class="slide-bg"></div>
+                        <div class="slide-content">
+                            <h1 class="main-title">SELAMAT TAHUN BARU 2026</h1>
+
+                            <div class="message-card no-bg">
+                                <div class="card-shine"></div>
+                                <div class="card-decorations">
+                                    <span class="deco-floating deco-top-left">🎉</span>
+                                    <span class="deco-floating deco-top-right">🎆</span>
+                                    <span class="deco-floating deco-bottom-left">⭐</span>
+                                    <span class="deco-floating deco-bottom-right">🌟</span>
+                                </div>
+                                <div class="message-icon">🎊</div>
+                                <h3 class="message-title typing-title"></h3>
+                                <p class="message-text typing-text"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Controls -->
+            <div class="slider-controls">
+                <button class="nav-btn prev-btn" onclick="prevSlide()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span class="btn-text">Sebelumnya</span>
+                </button>
+
+                <div class="slide-indicators" id="slideIndicators"></div>
+
+                <button class="nav-btn next-btn" onclick="nextSlide()">
+                    <span class="btn-text">Selanjutnya</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+
+            <button onclick="resetForm()" class="back-btn">
+                ↩ Kembali ke Awal
+            </button>
+
+            <!-- Audio Celebration -->
+            <audio id="celebrationAudio" loop>
+                <source src="sound/1.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+
+    <script src="script_baru.js?v=2026.12.31.03"></script>
+</body>
+</html>

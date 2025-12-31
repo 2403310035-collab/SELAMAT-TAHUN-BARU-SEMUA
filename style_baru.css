@@ -1,0 +1,1623 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    min-height: 100vh;
+    color: white;
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1;
+}
+
+/* ===== BINTANG BERKILAU ===== */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* ===== ANIMASI SPARKLE UNTUK DEKORASI ===== */
+@keyframes sparkle {
+    0%, 100% { 
+        opacity: 0.4;
+        transform: scale(0.8);
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.2);
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
+    }
+}
+
+/* ===== MERCON CONTAINER ===== */
+.fireworks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 998;
+}
+
+.firework {
+    position: absolute;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    box-shadow: 0 0 12px currentColor;
+}
+
+/* ===== FALLING OBJECTS ===== */
+.falling-objects {
+    position: fixed;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.falling-object {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.falling-star {
+    filter: drop-shadow(0 0 5px #FFD700);
+}
+
+.falling-meteor {
+    filter: drop-shadow(0 0 8px #FF6B6B);
+    text-shadow: -2px -2px 5px rgba(255, 107, 107, 0.8);
+}
+
+.falling-trumpet {
+    filter: drop-shadow(0 0 6px #FFA500);
+    animation-timing-function: ease-in;
+}
+
+/* ===== FORM SECTION ===== */
+.form-section {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    border-radius: 30px;
+    padding: 50px 45px;
+    max-width: 560px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== ANIMASI TRANSISI TAHUN ===== */
+.year-animation {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 165, 0, 0.12));
+    border-radius: 25px;
+    border: 1px solid rgba(255, 215, 0, 0.35);
+}
+
+.year-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.year-item {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 215, 0, 0.4);
+}
+
+.old-year-item {
+    background: rgba(255, 255, 255, 0.05);
+    animation: fadeOutYear 3s infinite;
+}
+
+.new-year-item {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 165, 0, 0.15));
+    border: 2px solid rgba(255, 215, 0, 0.6);
+    animation: scaleInYear 3s infinite;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.year-number {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: shimmerText 2s infinite;
+}
+
+@keyframes fadeOutYear {
+    0%, 35% { opacity: 1; transform: scale(1); }
+    50%, 100% { opacity: 0.3; transform: scale(0.9); }
+}
+
+@keyframes scaleInYear {
+    0%, 35% { transform: scale(0.9); opacity: 0.3; }
+    50%, 100% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes shimmerText {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+@keyframes fadeOutScale {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.3); }
+}
+
+@keyframes fadeInScale {
+    0% { opacity: 0; transform: scale(0); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOutArrow {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes scalePulse {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.year-transition {
+    color: #FFD700;
+    animation: pulseArrow 2s infinite;
+}
+
+@keyframes pulseArrow {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50% { transform: scale(1.2) rotate(5deg); opacity: 0.8; }
+}
+
+.transition-arrow {
+    width: 60px;
+    height: 60px;
+}
+
+.celebration-text {
+    font-size: 1.2rem;
+    color: #FFD700;
+    font-weight: 600;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.form-title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #FFD700;
+    font-weight: 700;
+}
+
+.form-subtitle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 35px;
+    font-size: 1rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.name-input {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1.1rem;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.name-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.name-input:focus {
+    border-color: #FFD700;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.35);
+    transform: translateY(-2px);
+}
+
+.submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f0c29;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+/* ===== GREETING SECTION ===== */
+.greeting-section {
+    display: none;
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    animation: fadeIn 0.8s ease-in;
+    z-index: 2;
+}
+
+.slider-wrapper {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+/* ===== SLIDER ===== */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 600px;
+    overflow: hidden;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    min-height: 600px;
+}
+
+.slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.slide.prev {
+    transform: translateX(-100%);
+}
+
+.slide-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 165, 0, 0.05));
+    pointer-events: none;
+}
+
+.slide-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 35px;
+    z-index: 1;
+}
+
+.main-title {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: shimmerText 3s infinite;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+.name-display {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #FFD700;
+    margin-bottom: 25px;
+    padding: 15px 30px;
+    background: rgba(255, 215, 0, 0.12);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.35);
+    word-break: break-word;
+}
+
+/* ===== MESSAGE CARD ===== */
+.message-card {
+    position: relative;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    border-radius: 25px;
+    padding: 40px 35px;
+    max-width: 750px;
+    width: 100%;
+    box-shadow: none !important;
+    overflow: visible;
+}
+
+.message-card::before,
+.message-card::after {
+    display: none !important;
+}
+
+.card-shine {
+    display: none !important;
+}
+
+/* ===== FLOATING DECORATIONS ===== */
+.card-decorations {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.deco-floating {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatSparkle 3s ease-in-out infinite;
+    display: inline-block;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+
+.deco-top-left {
+    top: 15px;
+    left: 15px;
+    animation-delay: 0s;
+    animation-name: floatSparkle;
+}
+
+.deco-top-right {
+    top: 15px;
+    right: 15px;
+    animation-delay: 0.5s;
+    animation-name: floatSparkle;
+}
+
+.deco-bottom-left {
+    bottom: 15px;
+    left: 15px;
+    animation-delay: 1s;
+    animation-name: floatSparkle;
+}
+
+.deco-bottom-right {
+    bottom: 15px;
+    right: 15px;
+    animation-delay: 1.5s;
+    animation-name: floatSparkle;
+}
+
+@keyframes floatSparkle {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-8px) scale(1.2);
+    }
+}
+
+.message-card.premium {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.message-card.premium-finale {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.card-shine {
+    display: none !important;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: transparent;
+    animation: shine 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes shine {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.finale-decoration {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.deco-element {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatDeco 4s ease-in-out infinite;
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.deco-1 {
+    top: 15px;
+    left: 30px;
+    animation-delay: 0s;
+}
+
+.deco-2 {
+    top: 50%;
+    right: 40px;
+    animation-delay: 0.5s;
+}
+
+.deco-3 {
+    bottom: 20px;
+    left: 40px;
+    animation-delay: 1s;
+}
+
+@keyframes floatDeco {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+    50% { transform: translateY(-15px) rotate(10deg); opacity: 1; }
+}
+
+.message-icon {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+    background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: bounce 2s infinite, shimmerText 3s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.message-title {
+    font-size: 1.8rem;
+    color: #FFD700;
+    margin-bottom: 18px;
+    font-weight: 600;
+    min-height: auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Style untuk slides 1 dan 2 dengan text biru */
+.slide[data-slide="1"] .message-text,
+.slide[data-slide="2"] .message-text {
+    color: #4EB3FF;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.slide[data-slide="1"] .deco-name,
+.slide[data-slide="2"] .deco-name {
+    color: #4EB3FF;
+    text-shadow: 0 0 10px rgba(78, 179, 255, 0.8);
+}
+
+.message-text {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #4EB3FF;
+    font-weight: 600;
+    text-transform: uppercase;
+    min-height: auto;
+    position: relative;
+    z-index: 2;
+    letter-spacing: 0.5px;
+    background: transparent !important;
+}
+
+/* ===== NO BACKGROUND MESSAGE CARD ===== */
+.message-card.no-bg {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 20px 0;
+}
+
+.message-card.no-bg .card-shine {
+    display: none;
+}
+
+/* ===== HIASAN KELAP-KELIP DALAM TEXT ===== */
+.message-text::after {
+    display: none !important;
+}
+
+/* Styling untuk emoji dekorasi dalam text */
+.deco-name {
+    color: #4EB3FF;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(78, 179, 255, 0.8);
+    display: inline-block;
+    animation: sparkle 1.5s ease-in-out infinite;
+    text-transform: uppercase;
+}
+
+/* Efek Typing */
+.typing-title::after,
+.typing-text::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+    color: #FFD700;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ===== SLIDER CONTROLS ===== */
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: rgba(255, 215, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: rgba(255, 215, 0, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+    border-color: rgba(255, 215, 0, 0.6);
+}
+
+.nav-btn:active:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+.nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Slide Indicators */
+.slide-indicators {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.indicator.active {
+    background: #FFD700;
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    border-color: rgba(255, 215, 0, 0.8);
+}
+
+.indicator:hover {
+    background: rgba(255, 215, 0, 0.7);
+    transform: scale(1.15);
+}
+
+.btn-text {
+    display: inline;
+}
+
+.back-btn {
+    padding: 14px 35px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 14px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .form-section {
+        padding: 35px 25px;
+        border-radius: 22px;
+        max-width: 100%;
+    }
+
+    .year-animation {
+        padding: 22px;
+        border-radius: 18px;
+        margin-bottom: 30px;
+    }
+
+    .year-container {
+        gap: 12px;
+    }
+
+    .year-item {
+        width: 85px;
+        height: 85px;
+        border-radius: 12px;
+    }
+
+    .year-number {
+        font-size: 2rem;
+    }
+
+    .transition-arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .celebration-text {
+        font-size: 0.95rem;
+        margin-top: 12px;
+    }
+
+    .form-title {
+        font-size: 1.7rem;
+        margin-bottom: 8px;
+    }
+
+    .form-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 28px;
+    }
+
+    .input-group {
+        gap: 12px;
+    }
+
+    .name-input {
+        padding: 14px 16px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .submit-btn {
+        padding: 14px 30px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .greeting-section {
+        max-width: 100%;
+    }
+
+    .slider-wrapper {
+        margin-bottom: 30px;
+    }
+
+    .main-title {
+        font-size: 2rem;
+        margin-bottom: 18px;
+    }
+
+    .name-display {
+        font-size: 1.4rem;
+        padding: 12px 22px;
+        margin-bottom: 22px;
+        border-radius: 10px;
+    }
+
+    .slider-container {
+        height: 420px;
+        border-radius: 22px;
+    }
+
+    .slide-content {
+        padding: 35px 25px;
+    }
+
+    .message-card {
+        padding: 30px 25px;
+        border-radius: 18px;
+    }
+
+    .message-icon {
+        font-size: 2.2rem;
+        margin-bottom: 14px;
+    }
+
+    .message-title {
+        font-size: 1.4rem;
+        margin-bottom: 16px;
+        min-height: auto;
+    }
+
+    .message-text {
+        font-size: 1.02rem;
+        line-height: 1.7;
+        min-height: auto;
+    }
+
+    .slider-controls {
+        gap: 12px;
+        margin-top: 22px;
+        flex-wrap: wrap;
+    }
+
+    .nav-btn {
+        padding: 11px 18px;
+        font-size: 0.92rem;
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .btn-text {
+        display: inline;
+    }
+
+    .slide-indicators {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .indicator {
+        width: 11px;
+        height: 11px;
+    }
+
+    .back-btn {
+        padding: 12px 28px;
+        margin-top: 22px;
+        font-size: 0.95rem;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 12px;
+    }
+
+    .form-section {
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+
+    .year-animation {
+        padding: 18px;
+        margin-bottom: 25px;
+    }
+
+    .year-container {
+        gap: 10px;
+    }
+
+    .year-item {
+        width: 75px;
+        height: 75px;
+        border-radius: 10px;
+    }
+
+    .year-number {
+        font-size: 1.7rem;
+    }
+
+    .transition-arrow {
+        width: 35px;
+        height: 35px;
+    }
+
+    .celebration-text {
+        font-size: 0.9rem;
+    }
+
+    .form-title {
+        font-size: 1.55rem;
+    }
+
+    .form-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 22px;
+    }
+
+    .name-input {
+        padding: 13px 14px;
+        font-size: 0.95rem;
+    }
+
+    .submit-btn {
+        padding: 13px 28px;
+        font-size: 0.95rem;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+        margin-bottom: 16px;
+    }
+
+    .name-display {
+        font-size: 1.3rem;
+        padding: 11px 20px;
+        margin-bottom: 20px;
+    }
+
+    .slider-container {
+        height: 380px;
+        border-radius: 18px;
+    }
+
+    .slide-content {
+        padding: 30px 20px;
+    }
+
+    .message-card {
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+
+    .message-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+    }
+
+    .message-title {
+        font-size: 1.25rem;
+        margin-bottom: 14px;
+    }
+
+    .message-text {
+        font-size: 0.98rem;
+        line-height: 1.65;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 8px;
+        min-height: 100vh;
+    }
+
+    .form-section {
+        padding: 20px 15px;
+        border-radius: 16px;
+        max-width: 100%;
+    }
+
+    .year-animation {
+        padding: 12px;
+        margin-bottom: 18px;
+        border-radius: 14px;
+    }
+
+    .year-container {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .year-item {
+        width: 65px;
+        height: 65px;
+        border-radius: 8px;
+    }
+
+    .year-number {
+        font-size: 1.4rem;
+    }
+
+    .transition-arrow {
+        width: 28px;
+        height: 28px;
+        transform: rotate(90deg);
+    }
+
+    .celebration-text {
+        font-size: 0.75rem;
+        margin-top: 8px;
+    }
+
+    .form-title {
+        font-size: 1.2rem;
+        margin-bottom: 4px;
+    }
+
+    .form-subtitle {
+        font-size: 0.75rem;
+        margin-bottom: 16px;
+    }
+
+    .input-group {
+        gap: 8px;
+    }
+
+    .name-input {
+        padding: 10px 10px;
+        font-size: 0.85rem;
+        border-radius: 8px;
+    }
+
+    .submit-btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+        border-radius: 8px;
+        gap: 4px;
+    }
+
+    .submit-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .greeting-section {
+        max-width: 100%;
+    }
+
+    .slider-wrapper {
+        margin-bottom: 18px;
+    }
+
+    .main-title {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+
+    .name-display {
+        font-size: 1.1rem;
+        padding: 8px 14px;
+        margin-bottom: 14px;
+        border-radius: 8px;
+    }
+
+    .slider-container {
+        height: 310px;
+        border-radius: 14px;
+    }
+
+    .slide-content {
+        padding: 20px 12px;
+    }
+
+    .message-card {
+        padding: 18px 12px;
+        border-radius: 12px;
+        max-width: 100%;
+    }
+
+    .message-icon {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+    }
+
+    .message-title {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        min-height: auto;
+        line-height: 1.4;
+    }
+
+    .message-text {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        min-height: auto;
+    }
+
+    .floating-deco-text {
+        font-size: 0.8em;
+    }
+
+    .deco-element {
+        font-size: 1.3rem;
+    }
+
+    .slider-controls {
+        gap: 6px;
+        margin-top: 14px;
+        flex-direction: row;
+    }
+
+    .nav-btn {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+        flex: 1;
+        min-width: 80px;
+        border-radius: 8px;
+    }
+
+    .nav-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .btn-text {
+        display: none;
+    }
+
+    .slide-indicators {
+        gap: 6px;
+        flex-wrap: wrap;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .indicator {
+        width: 9px;
+        height: 9px;
+    }
+
+    .back-btn {
+        width: calc(100% - 20px);
+        padding: 11px 20px;
+        margin-top: 18px;
+        font-size: 0.9rem;
+        border-radius: 8px;
+    }
+}
+
+@media (max-height: 700px) and (max-width: 480px) {
+    .slider-container {
+        height: 300px;
+    }
+
+    .slide-content {
+        padding: 20px 16px;
+    }
+
+    .message-text {
+        min-height: 70px;
+    }
+}
+
+/* ===== ANIMASI DEKORASI BERGERAK DAN BERKEDIP ===== */
+.floating-deco {
+    display: inline-block;
+    margin: 0 2px;
+    animation: floatingDeco 2s ease-in-out forwards;
+}
+
+.floating-deco-text {
+    display: inline-block;
+    margin: 0 2px;
+    font-size: 0.9em;
+    vertical-align: middle;
+    position: relative;
+}
+
+@keyframes floatingDeco {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    20% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) translateX(15px) scale(1.2) rotate(180deg);
+    }
+    75% {
+        opacity: 0.7;
+        transform: translateY(-10px) translateX(-20px) scale(1) rotate(360deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.3) rotate(180deg);
+    }
+}
+
+/* Animasi dekorasi bergerak floating di dalam teks */
+@keyframes floatingDeco {
+    0% {
+        opacity: 0;
+        transform: translateY(0) translateX(0) scale(0.3);
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-15px) translateX(20px) scale(1.1) rotate(180deg);
+    }
+    80% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px) translateX(-10px) scale(0.2) rotate(360deg);
+    }
+}
+
+/* Animasi berkedip (twinkle) untuk dekorasi di teks */
+@keyframes twinkleDeco {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Animasi bounce untuk dekorasi di teks */
+@keyframes bounceDeco {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translateY(0) scale(1);
+    }
+    25% {
+        opacity: 1;
+        transform: translateY(-12px) scale(1.15);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-8px) scale(1.1);
+    }
+    75% {
+        opacity: 0.8;
+        transform: translateY(-4px) scale(1.05);
+    }
+    100% {
+        opacity: 0.5;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes colorShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes kelpFlash {
+    0%, 100% { text-shadow: 0 0 10px rgba(255, 0, 255, 0.8); }
+    50% { text-shadow: 0 0 20px rgba(0, 255, 255, 1); }
+}
+
+/* ===== MOBILE & ANDROID OPTIMIZATION ===== */
+@media (max-width: 480px) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        overflow-x: hidden;
+        width: 100vw;
+        height: 100vh;
+        overflow-y: auto;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .container {
+        padding: 10px;
+        min-height: auto;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    /* Form Section Mobile */
+    .form-section {
+        padding: 25px 15px;
+        border-radius: 18px;
+        max-width: 100%;
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    .year-animation {
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+    }
+
+    .year-container {
+        gap: 8px;
+    }
+
+    .year-item {
+        width: 70px;
+        height: 70px;
+    }
+
+    .year-number {
+        font-size: 1.5rem;
+    }
+
+    .transition-arrow {
+        width: 35px;
+        height: 35px;
+    }
+
+    .celebration-text {
+        font-size: 0.85rem;
+    }
+
+    .form-title {
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+    }
+
+    .form-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+
+    .name-input {
+        padding: 12px 15px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .submit-btn {
+        padding: 12px 25px;
+        font-size: 0.95rem;
+        border-radius: 10px;
+    }
+
+    /* Greeting Section Mobile */
+    .greeting-section {
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+        max-width: 100%;
+    }
+
+    .slider-wrapper {
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    .slider-container {
+        min-height: 500px;
+        height: auto;
+        max-height: 85vh;
+        border-radius: 20px;
+        padding: 0;
+        overflow: hidden;
+        margin: 0 auto;
+        width: calc(100% - 10px);
+    }
+
+    .slide {
+        min-height: 500px;
+        height: auto;
+    }
+
+    .slide-content {
+        padding: 25px 15px;
+        justify-content: flex-start;
+        padding-top: 20px;
+        overflow-y: auto;
+        max-height: 85vh;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    .name-display {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        padding: 10px 15px;
+        border-radius: 10px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Message Card Mobile */
+    .message-card {
+        padding: 20px 15px;
+        border-radius: 18px;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .message-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+    }
+
+    .message-title {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        line-height: 1.4;
+        hyphens: auto;
+    }
+
+    .message-text {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        text-align: justify;
+        white-space: normal;
+    }
+
+    /* Slider Controls Mobile */
+    .slider-controls {
+        gap: 12px;
+        margin-top: 15px;
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    .nav-btn {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 0.9rem;
+        border-radius: 12px;
+    }
+
+    .nav-btn .btn-text {
+        display: none;
+    }
+
+    .slide-indicators {
+        gap: 10px;
+        margin: 10px 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+
+    .back-btn {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 0.9rem;
+        margin-top: 15px;
+        border-radius: 12px;
+    }
+
+    /* Hapus falling objects */
+    .falling-objects {
+        display: none !important;
+    }
+
+    /* Adjust stars untuk mobile */
+    .stars {
+        opacity: 0.6;
+    }
+
+    /* Form input focus tanpa zoom */
+    .name-input:focus,
+    .name-input:active {
+        font-size: 1rem;
+    }
+
+    /* Prevent text selection */
+    h1, h2, h3, p, span { 
+        -webkit-user-select: text;
+        user-select: text;
+    }
+
+    /* Horizontal scroll prevention */
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+}
+
+/* ===== CHRISTMAS LIGHTS DECORATION ===== */
+.christmas-lights {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.light {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    animation: twinkling 1.5s ease-in-out infinite;
+    box-shadow: 0 0 15px currentColor;
+}
+
+@keyframes twinkling {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* ===== FALLING GIFTS DECORATION ===== */
+.falling-gifts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.gift {
+    position: fixed;
+    font-size: 2rem;
+    animation: fallGift 10s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes fallGift {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
